@@ -98,14 +98,24 @@
 }
 
 // Placeholder text
+// If you are wondering why the placeholder text isn't changing
+// check where the placeholder function is being called from (it may
+// be using a different value than input-color-placeholder)
 .placeholder(@color: @input-color-placeholder) {
   // Firefox
-  &::-moz-placeholder {
+  &::-moz-placeholder,
+  &:-moz-placeholder {
     color: @color;
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
   &:-ms-input-placeholder { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+.shadow(@size: @shadow-size, @color: @shadow-color) {
+  -webkit-box-shadow: @size @color;
+  -moz-box-shadow: @size @color;
+  box-shadow: @size @color;
 }
 
 // Transformations

@@ -7,9 +7,11 @@
 .panel {
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
-  border: 1px solid transparent;
+  border: 0 solid transparent;
   border-radius: @panel-border-radius;
-  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+  // nicer
+  border-top: 1px solid rgba(0,0,0,0.05);
+  .shadow()
 }
 
 // Panel contents
@@ -249,6 +251,30 @@
   }
 }
 
+// Primary panels
+// 
+// Used in the design for images with a tight border and text below
+
+.panel-primary {
+  border-top: 0;
+
+  .panel-heading {
+    padding: 0;
+    background: inherit;
+    border: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .panel-body {
+    padding: 18px 25px 20px;
+    color: @btn-primary-color;
+  }
+}
+
 
 // Contextual variations
 .panel-default {
@@ -268,4 +294,25 @@
 }
 .panel-danger {
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+
+// All buttons in panel body's look a bit different
+.panel {
+  > .panel-body {
+    > .btn,
+    > button {
+      display: block;
+      height: 40px;
+      line-height: 1em;
+      padding: 0;
+      font-size: 1.5rem;
+      width: 100%;
+      > a {
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        text-decoration: none
+      }
+    }
+  }
 }

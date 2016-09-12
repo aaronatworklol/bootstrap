@@ -15,7 +15,7 @@
   touch-action: manipulation;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
+
   white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
   .user-select(none);
@@ -57,6 +57,15 @@
       pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
   }
+
+  > a,
+  > a&:hover,
+  > a&:focus,
+  > a&.focus,
+  > a&:active,
+  > a&.active {
+    color: @btn-default-color
+  }
 }
 
 
@@ -66,6 +75,7 @@
 .btn-default {
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 }
+// Primary is used for callouts
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }

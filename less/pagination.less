@@ -2,23 +2,53 @@
 // Pagination (multiple pages)
 // --------------------------------------------------
 .pagination {
-  display: inline-block;
+  display: block;
+  text-align: right;
   padding-left: 0;
-  margin: @line-height-computed 0;
+  margin: 0 0;
   border-radius: @border-radius-base;
+  font-weight: 400;
+
+  @media (min-width: @grid-float-breakpoint) {
+    text-align: left;
+  }
+
+  > li:first-child > a,
+  > li:first-child > span,
+  > li:last-child > a,
+  > li:last-child > span,
+  > li:first-child > a:focus,
+  > li:first-child > span:focus,
+  > li:last-child > a:focus,
+  > li:last-child > span:focus {
+    background: none;
+    color: @gray-base;
+  }
+
+  > li:first-child > a:hover,
+  > li:first-child > span:hover,
+  > li:last-child > a:hover,
+  > li:last-child > span:hover {
+    background: none;
+    color: @gray-dark;
+  }
 
   > li {
     display: inline; // Remove list-style and block-level defaults
     > a,
     > span {
       position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      text-align: center;
       float: left; // Collapse white-space
       padding: @padding-base-vertical @padding-base-horizontal;
       line-height: @line-height-base;
       text-decoration: none;
       color: @pagination-color;
       background-color: @pagination-bg;
-      border: 1px solid @pagination-border;
+      border: @pagination-border-width solid @pagination-border;
       margin-left: -1px;
     }
     &:first-child {
@@ -48,7 +78,9 @@
   }
 
   > .active > a,
-  > .active > span {
+  > .active > span,
+  > .current > a,
+  > .current > span {
     &,
     &:hover,
     &:focus {
